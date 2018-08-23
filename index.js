@@ -21,17 +21,24 @@ fs.readdir("./comandos/", (error, comandos) => {
 bot.on("ready", async () => {
 });
 
-bot.on("message", async message => {
-  let prefix = "-";
-  if(message.author.bot) return;
-  if(message.channel.type === "dm") return;
-  let messagesplit = message.content.split(" "); //dividimos el mensaje por partes
-  let command = messagesplit[0]; //el nombre del comando que se ejecutara sera la posicion 0 del messagesplit
-  let commandname = command.slice(prefix.length) //removemos el prefix del argumento de la posicion 0 para obtener
-  let args = messagesplit.slice(1);
+const prefix = "-"
+bot.on("message", async message => { //los mensajes
 
-  let commandjs = bot.commands.get(commandname);
-  if(commandjs) commandjs.run(bot,message,args);
+  if(message.author.bot) return; //evitamos crear un blucle infinito
+  if(message.channel.type === "dm") return; //evitamos que se use el comando por mensajes privados
+
+
+  if(message.content.startsWith(prefix)) { //si el mensaje comienza con el prefix se ejecuta lo de abajo
+    let messagesplit = message.content.split(" "); //dividimos el mensaje
+    let command = messagesplit[0]; //tomamos como comando el mensaje de la posicion inicial
+    let commandname = command.slice(prefix.length); //removemos el prefix del mensaje command
+    let args = messagesplit.slice(1); //las posiciones posteriores a la posicion inicial lo tomaremos como argumentos
+    let commandjs = bot.commands.get(commandname); //evaluamos si el argumento inicial es un comando
+    if(commandjs) commandjs.run(bot, message, args); //si es un comando lo ejecutamos.
+  }
+
+
+
 
 });
 
