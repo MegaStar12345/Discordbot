@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  //!addrole @andrew Dog Person
   let prefix = "-"
   if(!message.guild.me.hasPermission("MANAGE_ROLES")){
     return message.channel.send("Antes de agregarle un rol a alguien, debes de darme el permiso MANAGE_ROLES.")

@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
 
 
     let page1 = "__**Comandos**__ `prefix: "+prefix+"`\n\n"+
-                "addrol, aos, rol, avatar, megabot, gatomg, delines, comandos, createmoji, gif, crearinvitacion, ip, ping, removerol, roles, say, serverlist, tweet"
+                "addrol, aos, rol, avatar, megabot, delines, comandos, createmoji, crearinvitacion, ping, removerol, roles, say, serverlist"
 
 
     let embed = new Discord.RichEmbed()
