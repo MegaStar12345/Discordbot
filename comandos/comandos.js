@@ -1,4 +1,4 @@
-const Discord = module.require('discord.js');
+const Discord = require('discord.js');
 
 
 
@@ -11,8 +11,9 @@ module.exports.run = async (bot, message, args) => {
                 "addrol, aos, rol, avatar, megabot, gatomg, delines, comandos, createmoji, gif, crearinvitacion, ip, ping, removerol, roles, say, serverlist, tweet"
 
 
-
-
+    let embed = new Discord.RichEmbed()
+    .addField("Comandos",page1)
+    message.channel.send(embed)
 }
 
 
