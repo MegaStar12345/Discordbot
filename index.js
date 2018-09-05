@@ -19,7 +19,7 @@ fs.readdir("./comandos/", (error, comandos) => {
 });
 
 bot.on("ready", async () => {
-  bot.user.setActivity(`Jugando Ace of Spades, -help`, {type: "PLAYING"});
+  bot.user.setActivity(`Ace of Spades, -help`, {type: "PLAYING"});
 });
 
 const prefix = "-"
