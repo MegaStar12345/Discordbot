@@ -7,10 +7,11 @@ module.exports.run = async (bot, message, args) => {
   .addField("Este bot unicamente esta relacionado al juego **Ace of Spades**","**__Comandos__**\n\n**-server** => Para mostrar todas las estadisticas de un servidor.\n**-serverlist** => Para mostrar el serverlist.\n**-invitar** => Para que me invites a tu servidor.\n**-avatar** => Comando extra, te muestra tu avatar o el de alguien.")
   .setColor("0000FF")
   .setThumbnail(bicon)
+
   return message.channel.send(botembed)
 }
 
 
 module.exports.help = {
-  name:"help"
+  name:"commands"
 }
