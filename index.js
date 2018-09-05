@@ -44,4 +44,4 @@ bot.on("message", async message => { //los mensajes
 
 
 
-bot.login("NDgyMTQzNDkwNTU4NjU2NTEz.DmAnFQ.5hqRw1krQKLx6hg7yZKAAZswESY");
+bot.login(process.env.BOT_TOKEN);
