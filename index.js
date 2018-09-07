@@ -31,21 +31,18 @@ bot.on("ready", async () => {
 
 bot.on("message", async message => { //los mensajes
   let serverpp;
-  Prefix.findOne({
-    serverID: message.guild.id
-  }, (err, prefix) => {
-    if(err) console.log(err);
-    if(!prefix) {
+  Prefix.findOne({serverID: message.guild.id}).then((currentprefix) => {
+    if(currentprefix) {
+      console.log(currentprefix)
+      serverpp = currentprefix.serverPrefix
+    }
+    else{
       const newPrefix = new Prefix({
         serverID: message.guild.id,
         serverPrefix: "-"
       })
       newPrefix.save().catch(err => console.log(err))
       serverpp = "-"
-    }
-    else{
-      serverpp = prefix.serverPrefix
-      prefix.save().catch(err => console.log(err))
     }
   })
   console.log(serverpp)
