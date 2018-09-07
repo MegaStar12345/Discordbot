@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const prefixSchema = mongoos.Schema({
+const prefixSchema = mongoose.Schema({
   serverID: String,
   prefix: String
 
