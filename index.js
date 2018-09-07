@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect("mongodb://MegaStar:MegaStar@ds149252.mlab.com:49252/rangers")
 
 const Prefix = require("./models/prefix.js")
 
