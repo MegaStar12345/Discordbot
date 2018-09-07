@@ -42,7 +42,7 @@ bot.on("message", async message => { //los mensajes
     }
   })
 
-  if(message.author.bot) return; //evitamos crear un blucle infinito
+  if(message.author.bot) return; //evitamos crear un blucle infinitof
   if(message.channel.type === "dm") return; //evitamos que se use el comando por mensajes privados
 
 

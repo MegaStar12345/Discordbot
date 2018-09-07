@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const prefixSchema = mongoos.Schema({
-  serverID: String;
+  serverID: String,
   prefix: String
 
 })
