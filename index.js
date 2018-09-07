@@ -32,12 +32,10 @@ bot.on("ready", async () => {
 bot.on("message", async message => { //los mensajes
   let serverprefix;
   Prefix.findOne({
-    console.log("entrando")
     serverID: message.guild.id
   }, (err, prefix) => {
     if(err) console.log(err);
     if(!prefix) {
-      console.log("entrando2")
       serverprefix = "-"
     }
     else{
