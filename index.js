@@ -32,10 +32,12 @@ bot.on("ready", async () => {
 bot.on("message", async message => { //los mensajes
   let serverprefix;
   Prefix.findOne({
+    console.log("entrando")
     serverID: message.guild.id
   }, (err, prefix) => {
     if(err) console.log(err);
     if(!prefix) {
+      console.log("entrando2")
       serverprefix = "-"
     }
     else{
@@ -43,6 +45,7 @@ bot.on("message", async message => { //los mensajes
       prefix.save().catch(err => console.log(err))
     }
   })
+  console.log(serverprefix)
 
   if(message.author.bot) return; //evitamos crear un blucle infinitof
   if(message.channel.type === "dm") return; //evitamos que se use el comando por mensajes privados
