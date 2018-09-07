@@ -37,6 +37,7 @@ bot.on("message", async message => { //los mensajes
     if(err) console.log(err);
     if(!prefix) {
       serverprefix = "-"
+      prefix.save().catch(err => console.log(err))
     }
     else{
       serverprefix = prefix.prefix

@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
+const Schema =  mongoose.Schema;
 
-const prefixSchema = mongoose.Schema({
+const prefixSchema = new Schema({
   serverID: String,
   prefix: String
 
 })
-
-module.exports = mongoose.model("Prefix", prefixSchema);
+const Prefix = mongoose.model("prefix", prefixSchema);
+module.exports = Prefix
