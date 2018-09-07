@@ -52,7 +52,7 @@ bot.on("message", async message => { //los mensajes
     let commandname = command.slice(serverprefix.length); //removemos el prefix del mensaje command
     let args = messagesplit.slice(1); //las posiciones posteriores a la posicion inicial lo tomaremos como argumentos
     let commandjs = bot.commands.get(commandname); //evaluamos si el argumento inicial es un comando
-    if(commandjs) commandjs.run(bot, message, args); //si es un comando lo ejecutamos.
+    if(commandjs) commandjs.run(bot, message, args); //se es un comando lo ejecutamos
   }
 
 
