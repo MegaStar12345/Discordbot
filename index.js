@@ -2,7 +2,11 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
+const mongoose = require("mongoose");
 
+mongoose.connect(process.env.MONGODB)
+
+const Prefix = require("./models/prefix.js")
 
 
 fs.readdir("./comandos/", (error, comandos) => {
@@ -22,17 +26,30 @@ bot.on("ready", async () => {
   bot.user.setActivity(`Ace of Spades, -commands`, {type: "PLAYING"});
 });
 
-const prefix = "-"
+
 bot.on("message", async message => { //los mensajes
+  let serverprefix;
+  Prefix.findOne({
+    serverID: message.guild.id
+  }, (err, prefix) => {
+    if(err) console.log(err);
+    if(!prefix) {
+      serverprefix = "-"
+    }
+    else{
+      serverprefix = prefix.prefix
+      prefix.save().catch(err => console.log(err))
+    }
+  })
 
   if(message.author.bot) return; //evitamos crear un blucle infinito
   if(message.channel.type === "dm") return; //evitamos que se use el comando por mensajes privados
 
 
-  if(message.content.startsWith(prefix)) { //si el mensaje comienza con el prefix se ejecuta lo de abajo
+  if(message.content.startsWith(serverprefix)) { //si el mensaje comienza con el prefix se ejecuta lo de abajo
     let messagesplit = message.content.split(" "); //dividimos el mensaje
     let command = messagesplit[0]; //tomamos como comando el mensaje de la posicion inicial
-    let commandname = command.slice(prefix.length); //removemos el prefix del mensaje command
+    let commandname = command.slice(serverprefix.length); //removemos el prefix del mensaje command
     let args = messagesplit.slice(1); //las posiciones posteriores a la posicion inicial lo tomaremos como argumentos
     let commandjs = bot.commands.get(commandname); //evaluamos si el argumento inicial es un comando
     if(commandjs) commandjs.run(bot, message, args); //si es un comando lo ejecutamos.
