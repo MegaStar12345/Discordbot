@@ -48,7 +48,7 @@ module.exports.run = async (bot, message, args) => {
 
          }
          const embed = new Discord.RichEmbed()
-         .setDescription("© MegaStar\nServerlist completo, paginas actuales: **"+arrays.length+"**\nDale click a las reacciones ⬅ ➡ para avanzar o retroceder.\nSi quieres ver los datos de un servidor especifico, escribe `<server`")
+         .setDescription("© MegaStar\nServerlist completo, paginas actuales: **"+arrays.length+"**\nDale click a las reacciones ⬅ ➡ para avanzar o retroceder.\nSi quieres ver los datos de un servidor especifico usa el comando **server**")
          .setThumbnail(sicon)
          .setColor("#327224")
          .addField("Numero total de jugadores", player)

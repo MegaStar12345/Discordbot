@@ -30,41 +30,38 @@ bot.on("ready", async () => {
 
 
 bot.on("message", async message => { //los mensajes
-  let serverpp;
-  Prefix.findOne({serverID: message.guild.id}).then((currentprefix) => {
-    if(currentprefix) {
-      console.log(currentprefix)
-      serverpp = currentprefix.serverPrefix
-    }
-    else{
-      const newPrefix = new Prefix({
-        serverID: message.guild.id,
-        serverPrefix: "-"
-      })
-      newPrefix.save().catch(err => console.log(err))
-      serverpp = "-"
-    }
-  })
-  console.log(serverpp)
-
   if(message.author.bot) return; //evitamos crear un blucle infinitof
   if(message.channel.type === "dm") return; //evitamos que se use el comando por mensajes privados
 
 
-  if(message.content.startsWith(serverpp)) { //si el mensaje comienza con el prefix se ejecuta lo de abajo
-    let messagesplit = message.content.split(" "); //dividimos el mensaje
-    let command = messagesplit[0]; //tomamos como comando el mensaje de la posicion inicial
-    let commandname = command.slice(serverpp.length); //removemos el prefix del mensaje command
-    let args = messagesplit.slice(1); //las posiciones posteriores a la posicion inicial lo tomaremos como argumentos
-    let commandjs = bot.commands.get(commandname); //evaluamos si el argumento inicial es un comando
-    if(commandjs) commandjs.run(bot, message, args); //se es un comando lo ejecutamos
-  }
-
-
+  Prefix.findOne({serverID: message.guild.id}).then((currentprefix) => {
+    if(currentprefix) {
+      let prepre = currentprefix.serverPrefix
+      if(message.content.startsWith(prepre)) { //si el mensaje comienza con el prefix se ejecuta lo de abajo
+        let messagesplit = message.content.split(" "); //dividimos el mensaje
+        let command = messagesplit[0]; //tomamos como comando el mensaje de la posicion inicial
+        let commandname = command.slice(prepre.length); //removemos el prefix del mensaje command
+        let args = messagesplit.slice(1); //las posiciones posteriores a la posicion inicial lo tomaremos como argumentos
+        let commandjs = bot.commands.get(commandname); //evaluamos si el argumento inicial es un comando
+        if(commandjs) commandjs.run(bot, message, args); //se es un comando lo ejecutamos
+      }
+    }
+    else{
+      let prepre = "-"
+      if(message.content.startsWith(prepre)) { //si el mensaje comienza con el prefix se ejecuta lo de abajo
+        let messagesplit = message.content.split(" "); //dividimos el mensaje
+        let command = messagesplit[0]; //tomamos como comando el mensaje de la posicion inicial
+        let commandname = command.slice(prepre.length); //removemos el prefix del mensaje command
+        let args = messagesplit.slice(1); //las posiciones posteriores a la posicion inicial lo tomaremos como argumentos
+        let commandjs = bot.commands.get(commandname); //evaluamos si el argumento inicial es un comando
+        if(commandjs) commandjs.run(bot, message, args); //se es un comando lo ejecutamos
+      }
+    }
+  })
 
 
 });
 
 
 
-bot.login(process.env.BOT_TOKEN);
+bot.login("NDgyMTQzNDkwNTU4NjU2NTEz.DnGJYw.YTx9FoFsMCsc1pohRiFiDzD3iRg");
