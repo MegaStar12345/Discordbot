@@ -4,7 +4,7 @@ const bot = new Discord.Client();
 bot.commands = new Discord.Collection();
 const mongoose = require("mongoose");
 
-mongoose.connect(process.env.MONGODB)
+mongoose.connect(process.env.MONGODB_URI)
 
 const Prefix = require("./models/prefix.js")
 
