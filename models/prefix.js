@@ -3,7 +3,7 @@ const Schema =  mongoose.Schema;
 
 const prefixSchema = new Schema({
   serverID: String,
-  prefix: String
+  serverPrefix: String
 
 })
 const Prefix = mongoose.model("prefix", prefixSchema);

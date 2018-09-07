@@ -36,11 +36,13 @@ bot.on("message", async message => { //los mensajes
   }, (err, prefix) => {
     if(err) console.log(err);
     if(!prefix) {
-      serverprefix = "-"
+      serverID: message.guild.id,
+      serverPrefix: "-"
       prefix.save().catch(err => console.log(err))
+      serverprefix = "-"
     }
     else{
-      serverprefix = prefix.prefix
+      serverprefix = prefix.serverPrefix
       prefix.save().catch(err => console.log(err))
     }
   })
