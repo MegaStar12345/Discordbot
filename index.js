@@ -25,7 +25,7 @@ fs.readdir("./comandos/", (error, comandos) => {
 });
 
 bot.on("ready", async () => {
-  bot.user.setActivity(`Ace of Spades, -commands`, {type: "PLAYING"});
+  bot.user.setActivity(`Ace of Spades, default prefix: -commands`, {type: "PLAYING"});
 });
 
 
